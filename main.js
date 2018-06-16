@@ -1,4 +1,4 @@
-//npm install --save express needle cheerio path handlebars mongodb
+//npm install --save express needle cheerio path handlebars mongodb mongoose
 var express = require('express');
 var path = require('path');
 var needle = require('needle');
