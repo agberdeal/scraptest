@@ -1,7 +1,9 @@
 var mongoose = require('mongoose');
 
-var mercado = new mongoose.Schema({
-    mercadoID : { type: string , index: true},
-    nombre : { type: string },
-    pais : { type: string },
+var mercadoSchema = new mongoose.Schema({
+    mercadoID : { type: String },
+    nombre : { type: String },
+    pais : { type: String },
 })
+
+module.exports = mongoose.model('Mercado', mercadoSchema); 

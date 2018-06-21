@@ -1,8 +1,10 @@
 var mongoose = require('mongoose');
 
-var histRentabilidad = new mongoose.Schema({
-    fecha : { type: date , index: true},
-    mercadoID : { type: string , index: true},
-    ticker : { type: string , index: true},
+var histRentabilidadSchema = new mongoose.Schema({
+    fecha : { type: Date },
+    mercadoID : { type: String },
+    ticker : { type: String },
     rentabilidad : { type: Number }
 })
+
+module.exports = mongoose.model('HistRentabilidad', histRentabilidadSchema);

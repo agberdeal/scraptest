@@ -1,8 +1,14 @@
 var mongoose = require('mongoose');
 
-var portfolio = new mongoose.Schema({
-    fecha : { type: date , index: true},
-    mercadoID : { type: string , index: true},
-    ticker : { type: string , index: true},
-    posicion : { type: Number }
+var portfolioSchema = new mongoose.Schema({
+    id : { type : Number },
+    nombre : { type : String },
+    valores : {
+        fecha : { type: Date },
+        mercadoID : { type: String },
+        ticker : { type: String },
+        posicion : { type: Number }
+    }
 })
+
+module.exports = mongoose.model('Portfolio', portfolioSchema);

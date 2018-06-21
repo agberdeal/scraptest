@@ -1,10 +1,12 @@
 var mongoose = require('mongoose');
 
-var valoracion = new mongoose.Schema({
-    fecha : { type: date , index: true},
-    mercadoID : { type: string , index: true},
-    ticker : { type: string , index: true},
-    origenID : { type: text , index: true },
-    marcadorID : { type: text , index: true },
-    valor : { type: text }
+var valoracionSchema = new mongoose.Schema({
+    fecha : { type: Date },
+    mercadoID : { type: String },
+    ticker : { type: String },
+    origenID : { type: String },
+    marcadorID : { type: String },
+    valor : { type: String }
 })
+
+module.exports = mongoose.model('Valoracion', valoracionSchema);

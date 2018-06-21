@@ -1,8 +1,10 @@
 var mongoose = require('mongoose');
 
-var valor = new mongoose.Schema({
-    mercadoID : { type: string , index: true},
-    ticker : { type: string , index: true},
-    isin : { type: string },
-    nombre : { type: string }
+var valorSchema = new mongoose.Schema({
+    mercadoID : { type: String },
+    ticker : { type: String },
+    isin : { type: String },
+    nombre : { type: String }
 })
+
+module.exports = mongoose.model('Valor', valorSchema);

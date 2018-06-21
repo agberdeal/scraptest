@@ -1,7 +1,9 @@
 var mongoose = require('mongoose');
 
-var marcador = new mongoose.Schema({
-    origenID : { type: text, index: true },
-    marcadorID : { type: text, index: true },
-    descripcion : { type: text }
+var marcadorSchema = new mongoose.Schema({
+    origenID : { type: String, },
+    marcadorID : { type: String },
+    descripcion : { type: String }
 })
+
+module.exports = mongoose.model('Marcador', marcadorSchema);
