@@ -1,22 +1,38 @@
-//npm install --save express needle cheerio path handlebars mongodb mongoose
+'use strict'
 
 // Imports
-var mongoose = require('mongoose');
-const metodos = require('./extraction/e1');
-const cargas = require('./data/carga1');
+const events = require('events');
+const emitter = events.EventEmitter;
 
-//Config
-var url_mongo="mongodb://localhost:27017/"
-var database="inversion"
+const bd = require('./util/db');
+const metodos = require('./util/e1');
+const cargas = require('./util/carga1');
 
-// Iniciamos conexion con base de datos
-mongoose.connect(url_mongo + database);
+// Creamos conexxion a BBDD
+let con = bd.conectar();
 
-// Ejecutamos la extraccion de precios y rentabilidades del dia
-var res1 = metodos.e1();
+// Evento para detectar fin de ejecución
+let em = new emitter();
+
+em.addListener('END-C2', function (data) {
+    console.log('Carga finalizada! lanzamos carga de precios!')
+
+    // Ejecutamos la extraccion de precios y rentabilidades del dia
+    metodos.e1(em);
+});
+
+em.addListener('END-E1', function (data) {
+    console.log('Fin detectado, cerramos recursos y salimos.')
+
+    // Desconexion de BBDD
+    bd.desconectar(con);
+
+    // Salimos de la aplicacion
+    return process.exit(0);
+});
 
 // Ejecutamos la carga de alias (tickers)
-//var c1 = cargas.carga1();
+cargas.carga1(em);
 
-console.log("fin");
-                    
+
+
