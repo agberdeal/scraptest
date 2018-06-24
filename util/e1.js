@@ -4,13 +4,12 @@ module.exports.e1 = function (em) {
 	'use strict'
 
 	// Imports
-	var needle = require('needle');
-	var cheerio = require('cheerio');
-	var mongoose = require('mongoose');
+	let needle = require('needle');
+	let cheerio = require('cheerio');
 
-	var HistPrecio = require('../model/histPrecio');
-	var HistRentabilidad = require('../model/histRentabilidad');
-	var Ticker = require('../model/ticker');
+	let HistPrecio = require('../model/histPrecio');
+	let HistRentabilidad = require('../model/histRentabilidad');
+	let Diccionario = require('../model/diccionario');
 
 	// Config
 	let model = {
@@ -19,13 +18,11 @@ module.exports.e1 = function (em) {
 		today : new Date()
 	};
 
-	
-
 	//Paso 1: Obtenemos los tickers
-	Ticker.find().exec()
+	Diccionario.find({tipo:"ticker"}).exec()
 		.then(function (ts) {
 
-			// Agregamos tickers al modelo.
+			// Agregamos diccionario al modelo.
 			model.tickers = ts;
 
 			// Paso 2: Extraccion de cuerpo de web: www.expansion.com
@@ -42,18 +39,18 @@ module.exports.e1 = function (em) {
 			// Paso 3: Conversion de HTML y extraccion de lista de valores			
 			
 			// Conversion de cuerpo HTML a objeto Cheerio para poder examinar.
-			var pagina = cheerio.load(body, { lowerCaseTags: true, xmlMode: true });
+			let pagina = cheerio.load(body, { lowerCaseTags: true, xmlMode: true });
 
 			// Descomponemos la tabla en lineas
 			pagina('#listado_valores tbody tr').each(function (i) {
 
 				// Conversion de cada linea HTML a objeto Cheerio para poder examinar.
-				var linea_html = pagina(this).html();
-				var linea = cheerio.load(linea_html, { lowerCaseTags: true, xmlMode: true });
+				let linea_html = pagina(this).html();
+				let linea = cheerio.load(linea_html, { lowerCaseTags: true, xmlMode: true });
 
 				// Por cada linea/valor creamos elementos histPrecio e histRentabilidad
-				var histPrecio = new HistPrecio();
-				var histRentabilidad = new HistRentabilidad();
+				let histPrecio = new HistPrecio();
+				let histRentabilidad = new HistRentabilidad();
 
 				histPrecio.fecha = model.today;
 				histPrecio.mercadoID = model.mercado;
@@ -65,12 +62,12 @@ module.exports.e1 = function (em) {
 				linea('td').each(function (i) {
 					if (i == 0) {
 						// Nombre
-						var nombre_valor = linea(this).text();
+						let nombre_valor = linea(this).text();
 
 						model.tickers.forEach(function (t, indice, array) {
 							if (nombre_valor == t.tag) {
-								histPrecio.ticker = t.ticker;
-								histRentabilidad.ticker = t.ticker;
+								histPrecio.ticker = t.valor;
+								histRentabilidad.ticker = t.valor;
 							}
 						});
 
@@ -86,9 +83,8 @@ module.exports.e1 = function (em) {
 				})
 
 				// Guardamos los elementos en la BBDD.
-				histPrecio.save();
-				histRentabilidad.save();
-			
+				if (histPrecio.ticker!=undefined){ histPrecio.save(); }
+				if (histRentabilidad.ticker!=undefined){ histRentabilidad.save(); }			
 			});
 
 			// tras tratar todas las lineas enviamos evento de fin de proceso.
