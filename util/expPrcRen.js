@@ -1,5 +1,5 @@
 //Extraccion de Precio y rentabilidad de valores
-module.exports.e1 = function (em) {
+module.exports.expPrcRen = function (em) {
 
 	'use strict'
 

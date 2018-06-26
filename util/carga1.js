@@ -155,8 +155,8 @@ module.exports.carga1 = function(em) {
     new Diccionario({ tipo: "ticker" , tag: "RED ELÉCTRICA", valor: "REE" }).save();
     new Diccionario({ tipo: "ticker" , tag: "RENO DE MEDICI", valor: "RDM" }).save();
     new Diccionario({ tipo: "ticker" , tag: "RENTA CORPORACION", valor: "REN" }).save();
-    new Diccionario({ tipo: "ticker" , tag: "RENTA 4", valor: "REP" }).save();
-    new Diccionario({ tipo: "ticker" , tag: "REPSOL", valor: "" }).save();
+    new Diccionario({ tipo: "ticker" , tag: "RENTA 4", valor: "R4" }).save();
+    new Diccionario({ tipo: "ticker" , tag: "REPSOL", valor: "REP" }).save();
     new Diccionario({ tipo: "ticker" , tag: "ROVI", valor: "ROVI" }).save();
     new Diccionario({ tipo: "ticker" , tag: "SACYR", valor: "SCYR" }).save();
     new Diccionario({ tipo: "ticker" , tag: "SAETA YIELD", valor: "SAY" }).save();

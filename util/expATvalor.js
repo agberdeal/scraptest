@@ -1,7 +1,6 @@
-//Extraccion de Analisis Tecnico:
+//Extraccion de Analisis de valor:
 // Origen: www.expansion.com 
-// Valor: Abengoa.A
-module.exports.eat1 = function (em) {
+module.exports.expATvalor = function (id_valor,url) {
 
 	'use strict'
 
@@ -14,8 +13,8 @@ module.exports.eat1 = function (em) {
 
 	// Config
 	let model = {
-		url_expansion: "http://www.expansion.com/mercados/bolsa/recomendaciones/analisis-tecnico/a/abengoa_NEABG.html",
-		ticker: "ABG",
+		url_at_exp: url,
+		ticker: id_valor,
 		origenID:"expansion",
 		mercado: "BME",
 		today: new Date()
@@ -30,7 +29,7 @@ module.exports.eat1 = function (em) {
 
 			// Paso 2: Extraccion de cuerpo de web: www.expansion.com
 			return new Promise(function (resolve, reject) {
-				needle.get(model.url_expansion,
+				needle.get(model.url_at_exp,
 					function (err, resp, body) {
 						if (err) reject(err);
 						resolve(body);
