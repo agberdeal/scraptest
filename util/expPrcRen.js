@@ -1,6 +1,6 @@
-//Extraccion de Precio y rentabilidad de valores
-module.exports.expPrcRen = function (em) {
+module.exports.expPrcRen = function () {
 
+	//Extraccion de Precio y rentabilidad de valores
 	'use strict'
 
 	// Imports
@@ -19,7 +19,7 @@ module.exports.expPrcRen = function (em) {
 	};
 
 	//Paso 1: Obtenemos los tickers
-	Diccionario.find({tipo:"ticker"}).exec()
+	Diccionario.find({tipo:"ticker",origen: "expansion"}).exec()
 		.then(function (ts) {
 
 			// Agregamos diccionario al modelo.
@@ -86,12 +86,6 @@ module.exports.expPrcRen = function (em) {
 				if (histPrecio.ticker!=undefined){ histPrecio.save(); }
 				if (histRentabilidad.ticker!=undefined){ histRentabilidad.save(); }			
 			});
-
-			// tras tratar todas las lineas enviamos evento de fin de proceso.
-			setTimeout(function(){
-                em.emit('END-E1','Fin de proceso!');
-            }
-            , 3000); // Esperamos 3 segundos  
 				
 		});
 };

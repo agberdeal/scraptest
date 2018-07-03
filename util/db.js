@@ -1,6 +1,7 @@
 module.exports.conectar = function(){
 
-	var mongoose = require('mongoose');
+	// Imports
+	let mongoose = require('mongoose');
 
 	// Config
 	const url_mongo="mongodb://localhost/";

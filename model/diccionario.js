@@ -4,9 +4,10 @@ let mongoose = require('mongoose');
 
 let diccionarioSchema = new mongoose.Schema(
     {
-        tipo: { type: String },
-        tag: { type: String },
-        valor: { type: String }
+        tipo : { type: String },
+        origen : { type: String },
+        tag : { type: String },
+        valor : { type: String }
     },
     { 
         collection: 'diccionario' 

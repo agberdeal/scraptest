@@ -57,7 +57,7 @@ module.exports.expATvalor = function (id_valor,url) {
 				linea('td img').each(function (i) {
 					if (i == 0) {
 
-						let señal = linea(this).attr('title');
+						let signo = linea(this).attr('title');
 		
 						// Indicador Corto Plazo
 						let indicadorCP = new Indicador();
@@ -66,13 +66,13 @@ module.exports.expATvalor = function (id_valor,url) {
 						indicadorCP.ticker = model.ticker;
 						indicadorCP.origenID = model.origenID;
 						indicadorCP.indicadorID = "Corto Plazo";
-						indicadorCP.señal = señal;	
+						indicadorCP.signo = signo;	
 
-						//indicadorCP.save();
+						indicadorCP.save();
 					}
 					if (i == 1) {
 
-						let señal = linea(this).attr('title');
+						let signo = linea(this).attr('title');
 
 						// Indicador Medio Plazo
 						let indicadorMP = new Indicador();
@@ -81,13 +81,13 @@ module.exports.expATvalor = function (id_valor,url) {
 						indicadorMP.ticker = model.ticker;
 						indicadorMP.origenID = model.origenID;
 						indicadorMP.indicadorID = "Largo Plazo";
-						indicadorMP.señal = señal;	
+						indicadorMP.signo = signo;	
 
-						//indicadorMP.save();
+						indicadorMP.save();
 					}
 					if (i == 2) {
 
-						let señal = linea(this).attr('title');
+						let signo = linea(this).attr('title');
 
 						// Indicador Largo Plazo
 						let indicadorLP = new Indicador();
@@ -96,9 +96,9 @@ module.exports.expATvalor = function (id_valor,url) {
 						indicadorLP.ticker = model.ticker;
 						indicadorLP.origenID = model.origenID;
 						indicadorLP.indicadorID = "Largo Plazo";
-						indicadorLP.señal = señal;	
+						indicadorLP.signo = signo;	
 
-						//indicadorLP.save();
+						indicadorLP.save();
 					}
 				});
 				
@@ -140,12 +140,12 @@ module.exports.expATvalor = function (id_valor,url) {
 						indicador.valorActual = linea(this).text();
 					}
 					if (i == 3) {
-						let señal_html = linea(this).html();
+						let signo_html = linea(this).html();
 
-						let señal = cheerio.load(señal_html, { lowerCaseTags: true, xmlMode: true });
+						let signo = cheerio.load(signo_html, { lowerCaseTags: true, xmlMode: true });
 
-						señal('img').each(function (j) {
-							indicador.señal = señal(this).attr('title');
+						signo('img').each(function (j) {
+							indicador.signo = signo(this).attr('title');
 						});						
 					}
 					if (i == 4) {

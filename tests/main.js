@@ -34,5 +34,15 @@ em.addListener('END-E1', function (data) {
 // Ejecutamos la carga de alias (tickers)
 cargas.carga1(em);
 
+/**
+ * function(res){
+            
+    console.log("Carga finalizada.");
+    //Al finalizar la última inserción lanzamos evento de fin de proceso.
+    setTimeout(function(){
+        em.emit('END-C2','Fin de proceso!');
+    }
+    , 3000); // Esperamos 3 segundos            
+}*/
 
 

@@ -9,7 +9,7 @@ let indicadorSchema = new mongoose.Schema(
         ticker: { type: String },
         origenID: { type: String },
         indicadorID: { type: String },
-        señal: { type: String },
+        signo: { type: String },
         comentario: { type: String },
         valorAnerior: { type: String },
         valorActual: { type: String },
