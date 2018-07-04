@@ -7,9 +7,9 @@ module.exports.expPrcRen = function () {
 	let needle = require('needle');
 	let cheerio = require('cheerio');
 
-	let HistPrecio = require('../model/histPrecio');
-	let HistRentabilidad = require('../model/histRentabilidad');
-	let Diccionario = require('../model/diccionario');
+	let HistPrecio = require('../../model/histPrecio');
+	let HistRentabilidad = require('../../model/histRentabilidad');
+	let Diccionario = require('../../model/diccionario');
 
 	// Config
 	let model = {
@@ -89,5 +89,3 @@ module.exports.expPrcRen = function () {
 				
 		});
 };
-
-

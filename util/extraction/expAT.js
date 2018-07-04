@@ -128,4 +128,4 @@ module.exports.expAT = function () {
     valores.forEach(function (v, indice, array) {
         metodos.expATvalor(v.ticker, v.url);
     });
-}		
+}	

@@ -9,8 +9,8 @@ module.exports.informAT = function () {
     let needle = require('needle');
     let cheerio = require('cheerio');
 
-    let Indicador = require('../model/indicador');
-    let Diccionario = require('../model/diccionario');
+    let Indicador = require('../../model/indicador');
+    let Diccionario = require('../../model/diccionario');
 
     // Config
     let model = {

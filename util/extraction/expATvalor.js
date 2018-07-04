@@ -8,8 +8,8 @@ module.exports.expATvalor = function (id_valor,url) {
 	let needle = require('needle');
 	let cheerio = require('cheerio');
 
-	let Indicador = require('../model/indicador');
-	let Diccionario = require('../model/diccionario');
+	let Indicador = require('../../model/indicador');
+	let Diccionario = require('../../model/diccionario');
 
 	// Config
 	let model = {
@@ -158,5 +158,3 @@ module.exports.expATvalor = function (id_valor,url) {
 
 		});
 };
-
-

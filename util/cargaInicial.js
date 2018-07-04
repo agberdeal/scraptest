@@ -1,4 +1,4 @@
-module.exports.carga1 = function() {
+module.exports.cargaInicial = function() {
 
     'use strict'
     

@@ -143,4 +143,4 @@ module.exports.pcbolsaAT = function () {
     valores.forEach(function (v, indice, array) {
         metodos.pcBolsaATvalor(v.ticker, v.url);
     });
-}	
+}

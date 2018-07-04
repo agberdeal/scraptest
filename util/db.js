@@ -1,5 +1,7 @@
 module.exports.conectar = function(){
 
+	'use strict'
+	
 	// Imports
 	let mongoose = require('mongoose');
 
