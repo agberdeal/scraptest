@@ -3,14 +3,14 @@ module.exports.operar = function (portfolioID, fechaOrden, mercadoID, ticker, ti
 
     'use strict'
 
-    // Obtiene el precio según última cotizacion
+    // Obtiene el precio según última cotización
     let precio = getPrecio(mercadoID, ticker, fechaOrden);
     precio.then(function (precio) {
 
         let titulosOp = Math.floor(importe / precio);
         let importeOp = titulosOp * precio;
 
-        // Obtenemos ultima posicion de la cartera y valor
+        // Obtenemos última posición de la cartera y valor
         let ultPos = getUltimaPosicion(portfolioID, mercadoID, ticker);
         ultPos.then(function (ultPos) {
 
@@ -20,17 +20,18 @@ module.exports.operar = function (portfolioID, fechaOrden, mercadoID, ticker, ti
             if (tipo == "Venta") { nuevaPos = ultPos.titulos - titulosOp; }
             
 
-            // Salvamos la nueva posicion
+            // Salvamos la nueva posición
             savePosicion(portfolioID, fechaOrden, mercadoID, ticker, nuevaPos);
 
             // Salvamos la nueva orden
             saveOrden(portfolioID, fechaOrden, mercadoID, ticker, tipo, importeOp, titulosOp);
+            
         }).catch(function(err){
 
-            //Si no hay ultima posicion creamos la inicial
+            //Si no hay última posición creamos la inicial
             let nuevaPos = titulosOp;            
 
-            // Salvamos la nueva posicion
+            // Salvamos la nueva posición
             savePosicion(portfolioID, fechaOrden, mercadoID, ticker, nuevaPos);
 
             // Salvamos la nueva orden
@@ -39,7 +40,7 @@ module.exports.operar = function (portfolioID, fechaOrden, mercadoID, ticker, ti
     });
 }
 
-// Obtiene el precio según última cotizacion
+// Obtiene el precio según última cotización
 let getPrecio = function (mercadoID, ticker, fechaOrden) {
 
     let HistPrecio = require('../model/histPrecio');
@@ -54,7 +55,7 @@ let getPrecio = function (mercadoID, ticker, fechaOrden) {
     });
 }
 
-// Obtiene la última posicion 
+// Obtiene la última posición 
 let getUltimaPosicion = function (portfolioID, mercadoID, ticker) {
 
     let Posicion = require('../model/posicion');
@@ -69,12 +70,12 @@ let getUltimaPosicion = function (portfolioID, mercadoID, ticker) {
     });
 }
 
-// Salvamos la nueva posicion
+// Salvamos la nueva posición
 let savePosicion = function (portfolioID, fecha, mercadoID, ticker, titulosOp) {
 
     let Posicion = require('../model/posicion');
 
-    // Actualizamos la posicion;
+    // Actualizamos la posición;
     let posicion = new Posicion();
 
     posicion.portfolioID = portfolioID;

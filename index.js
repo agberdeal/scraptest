@@ -5,6 +5,7 @@ const bd = require('./util/db');
 const extractor = require('./util/extractor');
 const cargas = require('./util/cargaInicial');
 const broker = require('./util/broker');
+const sistema1 = require('./util/sistema1');
 
 // Creamos conexion a BBDD
 let con = bd.conectar();
@@ -16,6 +17,9 @@ let con = bd.conectar();
 //extractor.extractor();
 
 // Prueba alta orden
-broker.operar("sistema1" , new Date() , "BME"  , "SAN" , "Compra", 2000);
+//broker.operar("sistema1" , new Date() , "BME"  , "SAN" , "Compra", 2000);
+
+// Prueba sistema 1
+sistema1.s1();
 
 
