@@ -7,7 +7,8 @@ const cargas = require('./util/cargaInicial');
 const broker = require('./util/broker');
 const delfos = require('./util/delfos');
 
-// Creamos conexion a BBDD
+
+// Creamos conexión a base de datos
 let con = bd.conectar();
 
 // Ejecutamos la carga de alias (tickers)
@@ -21,5 +22,13 @@ let con = bd.conectar();
 
 // Prueba sistema 1
 delfos.s1();
+
+// Cerramos conexion y Salimos de la ejecución
+//con.disconnect();
+//console.log("Fin de la ejecución");
+//process.exit(0);
+
+
+
 
 

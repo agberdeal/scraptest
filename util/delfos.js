@@ -10,19 +10,21 @@ module.exports.s1 = function () {
     let date = new Date("2018-07-06");
 
     // Sistema 1: Que comprar
-    /** 
+     
     let tickersCompra = s1QueComprar.execute(date);
     tickersCompra.then(function (tickers) {
 
+        console.log("Que comprar");
         console.log(tickers);
 
-    }); */
-
+    });
+    
     // Sistema 1: Que mantener
-    let tickers = ['BIO','IBG','SLR'];
+    let tickers = ['BIO','IBG'];
     let evalua = s1QueMantener.execute(tickers,date);
     evalua.then(function (e) {
 
+        console.log("Que mantener");
         console.log(e);
 
     }); 
