@@ -80,7 +80,7 @@ module.exports.expATvalor = function (id_valor,url) {
 						indicadorMP.mercadoID = model.mercado;
 						indicadorMP.ticker = model.ticker;
 						indicadorMP.origenID = model.origenID;
-						indicadorMP.indicadorID = "Largo Plazo";
+						indicadorMP.indicadorID = "Medio Plazo";
 						indicadorMP.signo = signo;	
 
 						indicadorMP.save();

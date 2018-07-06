@@ -5,7 +5,7 @@ const bd = require('./util/db');
 const extractor = require('./util/extractor');
 const cargas = require('./util/cargaInicial');
 const broker = require('./util/broker');
-const sistema1 = require('./util/sistema1');
+const delfos = require('./util/delfos');
 
 // Creamos conexion a BBDD
 let con = bd.conectar();
@@ -20,6 +20,6 @@ let con = bd.conectar();
 //broker.operar("sistema1" , new Date() , "BME"  , "SAN" , "Compra", 2000);
 
 // Prueba sistema 1
-sistema1.s1();
+delfos.s1();
 
 
